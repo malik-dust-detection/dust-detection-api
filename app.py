@@ -3,8 +3,10 @@ from tensorflow.keras.models import load_model
 from PIL import Image, ImageOps
 import numpy as np
 import io
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load model and labels
 model = load_model("model.h5", compile=False)
@@ -83,4 +85,5 @@ def predict():
     })
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=5000, debug=True)
